@@ -42,8 +42,28 @@ module.exports = function(router) {
       return
     }
 
-    res.writeHead(400, {'Content-Type': 'text/plain'})
-    res.write('bad request; item id required to get record')
+    res.writeHead(400, {'Content-Type': 'text/plain'});
+    res.write('bad request; item id required to get record');
     res.end()
   })
+}
+route.delete('/api/toy', (req, res) => {
+  debug('/api/toy DELETE');
+  if(req.url.query._id) {
+    storage.deleteItem('toy', req.url.query._if);
+    .then(toy => {
+      res.writeHead(200, {'Content-Type': 'text/plain'});
+      res.end();
+    })
+    .catch(err => {
+      console.error(err);
+      res.writeHead(400, {'Content-Type': 'text/plain'});
+      res.write('bad request; could not find record');
+      res.end();
+    })
+    return;
+  }
+  res.writeHead(400, {'Content-Type': 'text.plain'});
+  res.write('bad request; item id required to get record');
+  res.end();
 }
