@@ -6,7 +6,7 @@ const storage = require('../lib/storage');
 
 module.exports = function(router) {
   router.post('/api/toy', (req, res) => {
-    debug('./api/toy POST');
+    debug('/api/toy POST');
     try {
       let newToy = new Toy(req.body.name, req.body.desc);
       storage.create('toy', newToy)
@@ -16,11 +16,13 @@ module.exports = function(router) {
         res.end();
       });
     } catch(e) {
+      console.error(e);
       res.writeHead(400, {'Content-Type': 'text/plain'});
-      res.write('bad request: could not create new toy');
+      res.write('bad request: could not create a new toy');
       res.end();
     }
   });
+
   router.get('/api/toy', (req, res) => {
     debug('/api/toy GET');
     if(req.url.query._id) {
@@ -33,24 +35,14 @@ module.exports = function(router) {
       .catch(err => {
         console.error(err);
         res.writeHead(400, {'Content-Type': 'text/plain'});
-        res.write('bad request; item id required to get record');
+        res.write('bad request; could not find record');
         res.end();
       });
       return;
     }
+
     res.writeHead(400, {'Content-Type': 'text/plain'});
     res.write('bad request; item id required to get record');
     res.end();
   });
 };
-
-
-
-
-// TODOs:
-// 1. Create a RESTful API using only vanilla JS and Node
-// 2. Modularize our code, and use best practices for separating concerns
-// 3. Have a single 'in-memory' resource/model for persistence (only while server is running)
-// 4. Recreate the basic functionality of ExpressJS as a Router
-
-// Demo today will complete GET and POST functionality. Students will complete PUT, DELETE, DOCS, and TESTS
