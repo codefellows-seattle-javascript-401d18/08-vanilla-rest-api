@@ -1,7 +1,7 @@
 {
-  "name": "aaron lab 08",
+  "name": "lab-aaron-08",
   "version": "1.0.0",
-  "description": "lab 08",
+  "description": "lab",
   "main": "server.js",
   "directories": {
     "lib": "lib"
