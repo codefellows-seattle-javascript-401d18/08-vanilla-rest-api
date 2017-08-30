@@ -49,6 +49,8 @@ module.exports = function(router) {
   });
 };
 
+
+///delete method
 router.delete('/api/toy', (req, res) => {
   debug('/api/toy DELETE');
   if(req.url.query._id) {
@@ -70,6 +72,8 @@ router.delete('/api/toy', (req, res) => {
   res.end();
 });
 
+
+///put method
 router.put('/api/toy', (req, res) => {
   debug('api/toy/PUT');
   if(req.url.query._id) {
