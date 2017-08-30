@@ -9,7 +9,7 @@ module.exports = function(router) {
   router.post('/api/cars', (req, res) => {
     debug('/api/cars POST');
     try {
-      let newcars = new Cars(req.body.name, req.body.desc, req.body.year);
+      let newcars = new Cars(req.body.make, req.body.model, req.body.year);
       // if successful, store this thing in memory using the storage module
       storage.create('cars', newcars)
         .then(cars => {
