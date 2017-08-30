@@ -4,6 +4,9 @@
 write a paragraph about what your API does
 
 document any resources that helped you complete you assignment
+https://httpie.org/doc
+https://www.npmjs.com/package/jest
+https://www.npmjs.com/package/uuid
 
 define how another dev can 'get started' with your api on their own
 

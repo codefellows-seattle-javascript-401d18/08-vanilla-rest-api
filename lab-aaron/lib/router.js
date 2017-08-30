@@ -1,6 +1,6 @@
 'use strict';
 
-const debug = require('debug')('hhtp:router');
+const debug = require('debug')('http:router');
 const parseUrl = require('./parse-url');
 const parseJson = require('./parse-json');
 
