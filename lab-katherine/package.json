@@ -1,6 +1,7 @@
 {
-  "name": "08-toyparty",
+  "name": "d18",
   "version": "1.0.0",
+  "description": "",
   "main": "server.js",
   "directories": {
     "lib": "lib"
@@ -22,20 +23,22 @@
   "scripts": {
     "start": "node server.js",
     "start:watch": "nodemon server.js",
+    "start:debug": "DEBUG=http* nodemon server.js",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "lint": "eslint .",
-    "start:debug": "DEBUG=http * nodemon server.js",
     "lint:test": "npm run lint && npm test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "debug": "^3.0.1",
     "eslint": "^4.5.0",
     "jest": "^20.0.4",
-    "uuid": "^3.1.0"
+    "superagent": "^3.6.0"
   },
-  "dependencies": {},
-  "description": ""
+  "dependencies": {
+    "uuid": "^3.1.0"
+  }
 }
