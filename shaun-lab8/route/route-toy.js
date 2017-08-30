@@ -1,91 +1,92 @@
-'use strict'
+'use strict';
 
-const debug = require('debug')('http:route-toy')
-const Toy = require('../model/toy')
-const storage = require('../lib/storage')
+const debug = require('debug')('http:route-toy');
+const Toy = require('../model/toy');
+const storage = require('../lib/storage');
+const router = require('../lib/router');
 
 module.exports = function(router) {
   router.post('/api/toy', (req, res) => {
-    debug('/api/toy POST')
+    debug('/api/toy POST');
     try {
-      let newToy = new Toy(req.body.name, req.body.desc)
+      let newToy = new Toy(req.body.name, req.body.desc);
       // if successful, store this thing in memory using the storage module
       storage.create('toy', newToy)
-      .then(toy => {
-        res.writeHead(201, {'Content-Type': 'application/json'})
-        res.write(JSON.stringify(toy))
-        res.end()
-      })
+        .then(toy => {
+          res.writeHead(201, {'Content-Type': 'application/json'});
+          res.write(JSON.stringify(toy));
+          res.end();
+        });
     } catch(e) {
-      console.error(e)
-      res.writeHead(400, {'Content-Type': 'text/plain'})
-      res.write('bad request: could not create a new toy')
-      res.end()
+      console.error(e);
+      res.writeHead(400, {'Content-Type': 'text/plain'});
+      res.write('bad request: could not create a new toy');
+      res.end();
     }
-  })
+  });
 
   router.get('/api/toy', (req, res) => {
-    debug('/api/toy GET')
+    debug('/api/toy GET');
     if(req.url.query._id) {
       storage.fetchOne('toy', req.url.query._id)
-      .then(toy => {
-        res.writeHead(200, {'Content-Type': 'application/json'})
-        res.write(JSON.stringify(toy))
-        res.end()
-      })
-      .catch(err => {
-        console.error(err)
-        res.writeHead(400, {'Content-Type': 'text/plain'})
-        res.write('bad request; could not find record')
-        res.end()
-      })
-      return
+        .then(toy => {
+          res.writeHead(200, {'Content-Type': 'application/json'});
+          res.write(JSON.stringify(toy));
+          res.end();
+        })
+        .catch(err => {
+          console.error(err);
+          res.writeHead(400, {'Content-Type': 'text/plain'});
+          res.write('bad request; could not find record');
+          res.end();
+        });
+      return;
     }
 
     res.writeHead(400, {'Content-Type': 'text/plain'});
     res.write('bad request; item id required to get record');
-    res.end()
-  })
-}
+    res.end();
+  });
+};
 
-route.delete('/api/toy', (req, res) => {
+router.delete('/api/toy', (req, res) => {
   debug('/api/toy DELETE');
   if(req.url.query._id) {
-    storage.deleteItem('toy', req.url.query._if);
-    .then(toy => {
-      res.writeHead(200, {'Content-Type': 'text/plain'});
-      res.end();
-    })
-    .catch(err => {
-      console.error(err);
-      res.writeHead(400, {'Content-Type': 'text/plain'});
-      res.write('bad request; could not find record');
-      res.end();
-    })
+    storage.deleteItem('toy', req.url.query._if)
+      .then(toy => {
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        res.end();
+      })
+      .catch(err => {
+        console.error(err);
+        res.writeHead(400, {'Content-Type': 'text/plain'});
+        res.write('bad request; could not find record');
+        res.end();
+      });
     return;
   }
   res.writeHead(400, {'Content-Type': 'text.plain'});
   res.write('bad request; item id required to get record');
   res.end();
-}
+});
 
 router.put('/api/toy', (req, res) => {
   debug('api/toy/PUT');
   if(req.url.query._id) {
-    storage.updateItem('toy', req.url.query._id);
-    .then(toy => {
-      res.writeHead(200, {'Content-Type': 'application/json'});
-      res.end();
-    })
-    .catch(err => {
-      console.error(err);
-      res.writeHead(400, {'Content-Type': 'text/plain'});
-      res.write('bad request could not find record');
-      res.end();
-    })
+    storage.updateItem('toy', req.url.query._id)
+      .then(toy => {
+        res.writeHead(200, {'Content-Type': 'application/json'});
+        res.end();
+      })
+      .catch(err => {
+        console.error(err);
+        res.writeHead(400, {'Content-Type': 'text/plain'});
+        res.write('bad request could not find record');
+        res.end();
+      });
     return;
   }
   res.writeHead(400, {'Content-Type': 'text/plain'});
   res.write('bad request; item update require ID');
   res.end();
-}
+});

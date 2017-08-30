@@ -1,10 +1,10 @@
-Patrick Sheridan
+Shaun Wahle - Lab-08 - Vanilla Rest API
 
 Lab-08
 
 Overview
 
-The purpose of the lab was to make a Create a HTTP Server using the http module that we could GET, POST, PUT, and DELETE a simple resource to. The resoources can be accessed by the uuid's and the name, model and horserpower can all be changed.
+The purpose of the lab was to make a Create a HTTP Server using the http module that we could GET, POST, PUT, and DELETE a simple resource to. The resources can be accessed by the uuid's and the name, model and horserpower can all be changed.
 
 How To Use
 
