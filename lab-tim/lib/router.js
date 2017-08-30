@@ -38,22 +38,22 @@ Router.prototype.route = function() {
       parseUrl(req),
       parseJson(req)
     ])
-    .then(() => {
-      if(typeof this.routes[req.method][req.url.pathname] === 'function') {
-        this.routes[req.method][req.url.pathname](req, res);
-        return;
-      }
+      .then(() => {
+        if(typeof this.routes[req.method][req.url.pathname] === 'function') {
+          this.routes[req.method][req.url.pathname](req, res);
+          return;
+        }
 
-      res.writeHead(400, {'Content-Type': 'text/plain'});
-      res.write('route not found');
-      res.end();
-    })
-    .catch(err => {
-      console.error(err);
+        res.writeHead(400, {'Content-Type': 'text/plain'});
+        res.write('route not found');
+        res.end();
+      })
+      .catch(err => {
+        console.error(err);
 
-      res.writeHead(400, {'Content-Type': 'text/plain'});
-      res.write('bad request; something went wrong in the router');
-      res.end();
-    });
+        res.writeHead(400, {'Content-Type': 'text/plain'});
+        res.write('bad request; something went wrong in the router');
+        res.end();
+      });
   };
 };

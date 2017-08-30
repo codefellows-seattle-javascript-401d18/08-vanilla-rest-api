@@ -4,22 +4,18 @@
 
 ### Description
 
-This app is a HTTP server.  You can send GET and POST requests to get a cowsay response.  The valid endpoints are `/` and `/cowsay`.  
+This app is a HTTP server.  You can send POST, PUT, GET, and DELETE requests to the server and get a response.  The valid only API endpoint is `/api/toy`.
 
-To run the server, you must have nodejs installed.  You also have to run npm install to download the npm required modules.  After you have those done, type "node server.js" in the terminal window.  The server will now be running.
+To run the server, you must have NodeJS installed.  You also have to run npm install to download the npm required modules.  These commands listed below to interact with the server require HTTPie to be installed on your computer.  After you have those done, type "node server.js" in the terminal window.  The server will now be running.
 
-To send requests to the server, type some of the following commands.  Note: these commands require HTTPie to be installed on your computer.  
+To send requests to the server, in another terminal windows, type some of the following commands.    
 
-`http GET localhost:3000/cowsay?text=hello+there` to return cowsay hello there
 
-`http POST localhost:3000/cowsay text='hello there'` to return cowsay hello there
+`http POST localhost:3000/api/toy name=slinky desc=plastic` should create a new toy named slinky with a description of metal and return a message with the toy id, name, and description if successful.
 
-`http GET localhost:3000/` to return 'hello from my server'
+`http GET localhost:3000/api/toy?_id="7ea8e888-7253-4120-9113-a1fdd21289ee"` should get a toy with an id of "7ea8e888-7253-4120-9113-a1fdd21289ee".  The toy ids are initialized on successful toy creation.  This will return the toy with it's id, name, and description properties.  
 
-`http GET localhost:3000/?text=hello` to return 'hello from my server'
+`http GET localhost:3000/api/toy?_id="some-invalid-id-string"` should return an error message stating the toy record could not be found.  
 
-`http POST localhost:3000/ name=joe` to return 'hello from my server'
 
-`http POST localhost:3000/` should return 400 error
-
-`http POST localhost:3000/cowsay name=joe` should return 400 error
+Type control + C to stop the server. 
