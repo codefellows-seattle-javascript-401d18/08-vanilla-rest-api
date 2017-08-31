@@ -7,8 +7,25 @@ Overview
 The purpose of the lab was to make a Create a HTTP Server using the http module that we could GET, POST, PUT, and DELETE a simple resource to. The resources can is accessed by the uuid's and the name, model and year can all be changed.
 
 How To Use
+Fork this repository and clone the forked repository anywhere you'd like on your computer.
 
-To use this code, run nodemon on the server.js file while in the directory.
+Open your terminal
+
+Navigate to the folder where you did your git clone with your newly forked repository.
+Make sure you are in the root directory IE.
+Type npm i into your terminal.
+Open two terminal windows.
+
+In the firt terminal type
+
+npm run start:watch
+This creates a local server which should log to the console
+server up:: 3000
+In the second terminal window
+
+brew install httpie
+This installs httpie which is a package that allows you to make calls to our local server.
+Here are a list of commands you may use to make API calls to this vanilla server.
 
 To add/POST a new toy in the server enter
 
@@ -17,15 +34,22 @@ where you can change what goes in after each equal sign.
 
 To GET/read a toy by it's Id, enter
 
-http GET localhost:3000/api/toy?id="f18965da-5bf4-471c-9d90-3bea009d1134"
-where the id= whatever the id of the toy is.
+http GET localhost:3000/api/toy _id='' will return an item from the database.
 
-To update/PUT a toy, enter
+example. http GET localhost:3000/api/toy _id='ee30e86a-36ee-4843-b47e-a252531bac41'
+http POST localhost:3000/api/toy name=name desc=desc will store a new item into the database.
 
-http PUT localhost:3000/api/toy id="f18965da-5bf4-471c-9d90-3bea009d1134" name="Batman" desc="batmobile"
-where the values of the name and desc are whatever is entered after the equals
+example. http POST localhost:3000/api/toy name=PowerRanger desc=I'm an awesome PowerRanger
+http PUT localhost:3000/api/toy?_id='someid name=new name desc=new desc' will replace the new information with the ID that was provided.
 
-To Delete a toy from the server enter
+example. http PUT localhost:3000/api/toy?_id='96d6514b-b1da-4a11-a8a7-b044436a23ab' name=NinjaTurtles desc=Donatello
+http DELETE localhost:3000/api/toy?_id='some Id' will return 404.
 
-http DELETE localhost:3000/api/toy?id="f9cd6bea-1d0d-4b0a-8cd0-365f52522632"
-where the id is the toy's id you want to delete.
+example. http DELETE localhost:3000/api/toy?_id='ee30e86a-36ee-4843-b47e-a252531bac41'.
+Usage
+
+This app is completely free to be used however you'd like!
+
+About
+
+I am currently a Full Stack Web Developer with focus in UX. If you are interested in using me for any of your projects please feel free to reach out to me!
