@@ -43,18 +43,17 @@ Router.prototype.route = function() {
       parseJson(req)
     ])
       .then(() => {
-        debug('#Router.route supppp')
         if(typeof this.routes[req.method][req.url.pathname] === 'function') {
+          debug(`it's me, margaret: ${req.url.pathname} ${req.method}`)
           this.routes[req.method][req.url.pathname](req, res)
           return
         }
-
-        res.writeHead(400, {'Content-Type': 'text/plain'})
+        res.writeHead(404, {'Content-Type': 'text/plain'})
         res.write('route not found')
         res.end()
       })
       .catch(err => {
-        console.error(err)
+        debug(`nah: \n${err.message}`)
 
         res.writeHead(400, {'Content-Type': 'text/plain'})
         res.write('bad request; something went wrong in the router')

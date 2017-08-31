@@ -6,8 +6,9 @@ const Router = require('./lib/router')
 const router = new Router()
 const PORT = process.env.PORT || 3000
 
+//dependency injection
 require('./route/route-toy')(router)
 
 const server = module.exports = http.createServer(router.route())
 
-server.listen(PORT, () => console.log(`Listening on ${PORT}`))
+server.listen(PORT, () => debug(`Listening on ${PORT}`))

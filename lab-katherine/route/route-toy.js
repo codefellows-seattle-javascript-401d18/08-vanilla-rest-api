@@ -25,24 +25,28 @@ module.exports = function(router) {
 
   router.put('/api/toy', (req, res) => {
     debug('/api/toy PUT')
-    if(req.url.query.id && req.body){
-      console.log(req.body, 'body')
-      let updateToy = (req.url.query.id, req)
-      storage.update('toy', updateToy)
-        .then(toy =>{
-          res.writeHead(200, {'Content-Type': 'application/json'})
-          res.write(JSON.stringify(toy))
+    if(req.url.query._id){
+      if(!req.body._id && !req.body.name && !req.body.desc){
+        res.writeHead(400, {'Content-Type': 'text/plain'})
+        res.write(`bad request`)
+        res.end()
+        return
+      }
+      storage.update('toy', req.body)
+        .then(() => {
+          res.writeHead(204, {'Content-Type': 'text/plain'})
           res.end()
         })
-        .catch(e =>{
-          console.error(e);
-          res.writeHead(400, {'Content-Type': 'text/plain'});
-          res.write('not updated - bad request')
+        .catch(err => {
+          res.writeHead(400, {'Content-Type': 'text/plain'})
+          res.write(`bad request ${err.message}`)
           res.end()
-
         })
       return
     }
+    res.writeHead(400, {'Content-Type': 'text/plain'})
+    res.write('bad request; item id required to get record')
+    res.end()
   })
 
   router.get('/api/toy', (req, res) => {

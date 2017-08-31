@@ -13,21 +13,22 @@ module.exports = function(req) {
         try {
           debug('#parse-json am i doing this')
           req.body = JSON.parse(body)
-          resolve(req)
+          return resolve(req)
         } catch(e) {
           console.error(e)
-          reject(e)
+          return reject(e)
         }
       })
 
       req.on('error', err => {
         console.error(err)
-        reject(err)
+        return reject(err)
       })
-
-      return
+      //return
+      //changed to explicit returns
     }
     debug('parse-json GET || DELETE')
     resolve(req)
+    //will return undefined implicitly
   })
 }

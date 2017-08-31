@@ -24,6 +24,7 @@
     "start": "node server.js",
     "start:watch": "nodemon server.js",
     "start:debug": "DEBUG=http* nodemon server.js",
+    "debugger": "node inspect server.js",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "lint": "eslint .",
