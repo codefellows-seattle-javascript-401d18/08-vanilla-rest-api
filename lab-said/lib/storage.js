@@ -14,7 +14,6 @@ storage.create = function(schema, item) {
   memory[schema][item._id] = item;
   return Promise.resolve(item);
 };
-
 storage.fetchOne = function(schema, itemId) {
 
   return new Promise((resolve, reject) => {
@@ -35,4 +34,12 @@ storage.update = function(schema, item) {
 
   memory[schema][item._id] = item;
   return Promise.resolve(item);
+};
+
+storage.delete = function(schema, itemId) {
+  if (memory[schema][itemId]) {
+    delete memory[schema][itemId];
+    return Promise.resolve();
+  }
+  return Promise.reject(new Error('item not found'));
 };
