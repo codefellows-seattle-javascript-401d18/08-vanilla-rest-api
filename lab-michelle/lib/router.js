@@ -7,6 +7,15 @@ const parseJson = require('./parse-json');
 const Router = module.exports = function() {
   this.routes = {
     GET: {
+      // '/api/toy': (res, req)=> {
+      //   res.writeHead(200, {'Content-Type': 'text/plain'});
+      //   // let toy = req.url.query; res.write(toy);
+      //   // //Logic for the send: if we're getting something we gotta get something back??
+      //   // res.send(toy);
+      //   res.end();
+      //   return;
+      // },
+
       // '/cowsay': ()=> {}
     },
     POST: {},
