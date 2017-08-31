@@ -18,14 +18,6 @@ storage.create = function(schema, item) {
 };
 
 storage.fetchOne = function(schema, itemId) {
-  // These two formats are effectively the same functionality; different formats
-  // if(!schema) return Promise.reject(new Error('cannot get item; schema required'))
-  // if(!itemId) return Promise.reject(new Error('cannon get item; itemId required'))
-  // if(!memory[schema]) return Promise.reject(new Error('cannot get item; schema does not exist'))
-  // if(!memory[schema][itemId]) return Promise.reject(new Error('cannot get item; item does not exist'))
-
-  // return Promise.resolve(memory[schema][itemId])
-
   return new Promise((resolve, reject) => {
     if(!schema) return reject(new Error('cannot get item; schema required'));
     if(!itemId) return reject(new Error('cannon get item; itemId required'));
@@ -37,7 +29,7 @@ storage.fetchOne = function(schema, itemId) {
 };
 
 storage.delete = function(schema, id) {
-  debug('#create');
+  debug('#delete');
   if(!schema) return Promise.reject(new Error('cannot create; schema required'));
   if(!id) return Promise.reject(new Error('cannot create; item required'));
 
@@ -47,9 +39,10 @@ storage.delete = function(schema, id) {
 };
 
 storage.put = function(schema, id, req) {
-  debug('#create');
-  if(!schema) return Promise.reject(new Error('cannot create; schema required'));
-  if(!id) return Promise.reject(new Error('cannot create; id required'));
+  debug('#delete');
+  if(!schema) return Promise.reject(new Error('cannot update; schema required'));
+  if(!id) return Promise.reject(new Error('cannot update; id required'));
+
   let newdescData = req.body.desc;
   let newnameData = req.body.name;
 
