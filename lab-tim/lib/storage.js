@@ -25,9 +25,9 @@ storage.update = function(schema, item) {
   if(!schema) return Promise.reject(new Error('cannot update; schema required'));
   if(!item) return Promise.reject(new Error('cannot update; item required'));
   if(!memory[schema]) memory[schema] = {};
+  if(!memory[schema][item._id]) memory[schema] = {};
 
-  memory[schema][item._id].name = item.name;
-  memory[schema][item._id].desc = item.desc;
+  memory[schema][item._id] = item;
   return Promise.resolve(item);
 };
 

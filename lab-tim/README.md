@@ -13,9 +13,11 @@ To send requests to the server, in another terminal windows, type some of the fo
 
 `http POST localhost:3000/api/toy name=slinky desc=plastic` should create a new toy named slinky with a description of metal and return a message with the toy id, name, and description if successful.
 
-`http GET localhost:3000/api/toy?_id="7ea8e888-7253-4120-9113-a1fdd21289ee"` should get a toy with an id of "7ea8e888-7253-4120-9113-a1fdd21289ee".  The toy ids are initialized on successful toy creation.  This will return the toy with it's id, name, and description properties.  
+`http GET localhost:3000/api/toy?_id="some-id-string"` should get by the provided ID string.  The toy ids are initialized on successful toy creation.  This will return the toy with it's id, name, and description properties.
 
-`http GET localhost:3000/api/toy?_id="some-invalid-id-string"` should return an error message stating the toy record could not be found.  
+`http PUT localhost:3000/api/toy _id="some-id-string" name=stuffy desc=blue` should update a toy record by the ID string provided.
+
+`http DELETE localhost:3000/api/toy?_id="some-id-string"` should delete a toy record by the ID string provided.
 
 
-Type control + C to stop the server. 
+Type control + C to stop the server.
