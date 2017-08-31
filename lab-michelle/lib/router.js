@@ -67,7 +67,8 @@ Router.prototype.route = function() {
         res.writeHead(400, {'Content-Type': 'text/plain'});
         res.write('bad request; something went wrong in the router');
         res.end();
-        server.close(); //will try this again after a literal reboot of computer
+        //reboot seemed to solve problem but oddly if I start nodemon it thinks I'm already running something on :3000 and tests won't run. If I DON'T use nodemon, tests will run. WHY IS THIS SERVER LITERALLY A BLACK BOX OF MYSTERY AUGHHHHH 
+        // server.close(); //will try this again after a literal reboot of computer
         // return; NOPE doesn't work
         // server.close(); this doesn't work either
         // server.end(); - I was trying to get it to stop the server running bc it seems like that is an issue????
