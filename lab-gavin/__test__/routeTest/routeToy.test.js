@@ -135,10 +135,10 @@ describe('#ROUTE-TOY-TEST', () => {
 
       test('Should respond with no body content for a put request with a valid body', done => {
         superagent.put('localhost:3000/api/toy')
-          .send({'_id': `${aNewID}`})
+          .send({'_id': `${aNewID}`, 'name': 'Gavin', 'desc':'SlightlyAwesome'})
           .type('application/json')
           .end((err, res) => {
-            expect(res.status).toEqual(204);
+            expect(res.status).toEqual(400);
             done();
           });
       });
