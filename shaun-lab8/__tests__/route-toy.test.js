@@ -1,6 +1,6 @@
 'use strict';
 
-const server = require('/Users/Gavin/codefellows/401/labs/08-vanilla-rest-api/lab-gavin/server.js');
+const server = require('/Users/Shaun/codefellows/401-labs/08-vanilla-rest-api/shaun-lab8/server.js');
 const superagent = require('superagent');
 
 
