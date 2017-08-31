@@ -24,26 +24,9 @@ module.exports = function(router) {
     }
   });
 
-  //PUT
-  // router.put('/api/toy', (req, res) => {
-  //   debug('/api/toy POST');
-  //   try {
-  //     let newToy = new Toy(req.body.name, req.body.desc, req.body.price, req.body.material);
-  //     // if successful, store this thing in memory using the storage module
-  //     storage.create('toy', newToy)
-  //       .then(toy => {
-  //         res.writeHead(201, {'Content-Type': 'application/json'});
-  //         res.write(JSON.stringify(toy));
-  //         res.end();
-  //       });
-  //   } catch(e) {
-  //     console.error(e);
-  //     res.writeHead(400, {'Content-Type': 'text/plain'});
-  //     res.write('bad request: could not create a new toy');
-  //     res.end();
-  //   }
-  // });
 
+
+  //GET
   router.get('/api/toy', (req, res) => {
     debug('/api/toy GET');
     if(req.url.query._id) {
@@ -62,8 +45,29 @@ module.exports = function(router) {
       return;
     }
 
+
     res.writeHead(400, {'Content-Type': 'text/plain'});
     res.write('bad request; item id required to get record');
     res.end();
+    
+    //PUT
+    // router.put('/api/toy', (req, res) => {
+    //   debug('/api/toy PUT');
+    //   try {
+    //     let newToy = new Toy(req.body.name, req.body.desc, req.body.price, req.body.material);
+    //     // if successful, store this thing in memory using the storage module
+    //     storage.create('toy', newToy)
+    //       .then(toy => {
+    //         res.writeHead(201, {'Content-Type': 'application/json'});
+    //         res.write(JSON.stringify(toy));
+    //         res.end();
+    //       });
+    //   } catch(e) {
+    //     console.error(e);
+    //     res.writeHead(400, {'Content-Type': 'text/plain'});
+    //     res.write('bad request: could not create a new toy');
+    //     res.end();
+    //   }
+    // });
   });
 };

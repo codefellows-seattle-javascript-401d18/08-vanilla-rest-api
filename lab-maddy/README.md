@@ -1,19 +1,18 @@
 
-
-* students will learn to use promise constructs to manage asynchronous code.
-* students will learn to create a vanilla RESTful API with in-memory persistence.
-
-
 # Documentation:
-  * Write a paragraph about what your API does:
+  * What this API does:
+  This project is practice in creating a basic API from scratch. We have an object constructor making "toy" objects with four parameters (toy name, toy description, material used (ie- plastic), and the price of the toy). The goal is to POST (create) this toy object, PUT, GET and DELETE this object from the server.
+      * Practice using promise constructs to manage asynchronous code.
+      * Practice creating a vanilla RESTful API with in-memory persistence.
 
-  * Document any resources that helped you complete your assignment:
-  * Define how another dev can 'get started' with your api on their own:
+  * Any resources that helped me complete this assignment:
+
+  * How another dev could 'get started' with my api on their own:
       - How do I clone it?
       First fork from my repository, then clone from your repo, then create a branch.
       - How do I start it?
 
-  * Document each of the available endpoints; including example request/response formats for each.
+  * Documentation of each of the available endpoints; including example request/response formats for each.
 
   // TODOs:
   // 1. Create a RESTful API using only vanilla JS and Node
@@ -44,6 +43,7 @@ http POST :3000/api/toy name=barney desc='purple dino' price='$10' material=plas
 }
     ```
 
+# Note:
 We will keep working on persistence in our next lab.
 
 # Packages and commands to remember:
@@ -60,3 +60,7 @@ We will keep working on persistence in our next lab.
     - rs (restart, if needed)
   - run start: watch - DONE
   - npm run start: debug - DONE
+
+
+# Collaborators:
+Michelle, Aaron, and Said.

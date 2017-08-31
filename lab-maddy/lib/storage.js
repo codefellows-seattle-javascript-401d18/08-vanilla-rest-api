@@ -10,7 +10,7 @@ const memory = {};
 //   }
 // }
 
-//GET
+//POST
 storage.create = function(schema, item) {
   debug('#create');
   if(!schema) return Promise.reject(new Error('cannot create; schema required'));
@@ -35,7 +35,7 @@ storage.fetchOne = function(schema, itemId) {
 
 //PUT
 storage.update = function(schema, item) {
-  debug('#create');
+  debug('#update');
   if(!schema) return Promise.reject(new Error('cannot create; schema required'));
   if(!item) return Promise.reject(new Error('cannot create; item required'));
   if(!memory[schema]) memory[schema] = {};
