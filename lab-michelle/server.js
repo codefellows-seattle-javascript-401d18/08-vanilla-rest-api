@@ -1,5 +1,5 @@
 'use strict';
-
+//server is kicking off the chain reaction//
 const debug = require('debug')('http:server');
 const http = require('http');
 const Router = require('./lib/router');

@@ -1,5 +1,5 @@
 'use strict';
-
+//Take the request and parse it out//
 const debug = require('debug')('http:parse-json');
 
 module.exports = function(req) {

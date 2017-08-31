@@ -1,4 +1,5 @@
 'use strict';
+//This thing is putting the toy in the toybox aka memory//
 
 const debug = require('debug')('http:route-toy');
 const Toy = require('../model/toy');
@@ -10,11 +11,11 @@ module.exports = function(router) {
     try {
       let newToy = new Toy(req.body.name, req.body.desc);
       storage.create('toy', newToy)
-      .then(toy => {
-        res.writeHead(201, {'Content-Type': 'application/json'});
-        res.write(JSON.stringify(toy));
-        res.end();
-      });
+        .then(toy => {
+          res.writeHead(201, {'Content-Type': 'application/json'});
+          res.write(JSON.stringify(toy));
+          res.end();
+        });
     } catch(e) {
       console.error(e);
       res.writeHead(400, {'Content-Type': 'text/plain'});
