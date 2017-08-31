@@ -14,6 +14,7 @@ storage.create = function(schema, item) {
 
   memory[schema][item._id] = item;
   console.log(memory);
+  // return fs.writeFileProm(path/id/actual data);
   return Promise.resolve(item);
 };
 
