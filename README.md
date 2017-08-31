@@ -74,7 +74,7 @@
  * successful status code of 204
 
 ## Rubric: 10pts
-* 2pts: Documentation 
+* 2pts: Documentation
 * 5pts: Feature Tasks
 * 3pts: Tests
 
