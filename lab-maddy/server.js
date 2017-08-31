@@ -6,19 +6,15 @@ const Router = require('./lib/router');
 const router = new Router();
 const PORT = process.env.PORT || 3000;
 
-require('./route/route-toy')(router);//dependency injection. could have kid and family here too.
+require('./route/route-toy')(router);
+// require('./route/route-kid')(router)
+// require('./route/route-family')(router)
 
-const server = module.exports = http.createServer(router.route()); //calling router.route reutrns a function definition which takes a req and a response. route method which returns a
+debug('please top complaining');
+
+const server = module.exports = http.createServer(router.route());
 
 server.listen(PORT, () => console.log(`Listening on ${PORT}`));
-
-// in terminal npm run start: debug
-// in other windwo-- http POST :3000/api/toy names=barney desc= 'purple dino'
-
-//should get that 201 status, and an object with those three key values
-
-
-
 
 // TODOs:
 // 1. Create a RESTful API using only vanilla JS and Node
@@ -27,3 +23,9 @@ server.listen(PORT, () => console.log(`Listening on ${PORT}`));
 // 4. Recreate the basic functionality of ExpressJS as a Router
 
 // Demo today will complete GET and POST functionality. Students will complete PUT, DELETE, DOCS, and TESTS
+
+
+// in terminal npm run start: debug
+// in other windwo-- http POST :3000/api/toy name=barney desc='purple dino'
+
+//should get that 201 status, and an object with those three key values

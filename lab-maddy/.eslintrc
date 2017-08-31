@@ -1,7 +1,7 @@
 {
   "rules": {
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
-    "comma-dangle": ["error", "always-multiline"],
+    "comma-dangle": ["error", "never"],
     "no-console": "off",
     "indent": [ "error", 2 ],
     "semi": ["error", "always"],

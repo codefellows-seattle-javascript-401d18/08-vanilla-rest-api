@@ -4,11 +4,9 @@ const debug = require('debug')('http:router');
 const parseUrl = require('./parse-url');
 const parseJson = require('./parse-json');
 
-const Router = module.exports = function(){
+const Router = module.exports = function() {
   this.routes = {
-    GET: {
-      // '/cowsay': ()=>{} //a router instance
-    },
+    GET: {},
     POST: {},
     PUT: {},
     DELETE: {}
@@ -19,7 +17,7 @@ const Router = module.exports = function(){
 
 
 Router.prototype.get = function(endpoint, callback) {
-  // debug('#Router.get')
+  debug('#Router.get');
   this.routes.GET[endpoint] = callback;
 };
 
@@ -50,7 +48,7 @@ Router.prototype.route = function(){
         res.write('route not found');
         res.end();
       })
-      .catch(err =>{
+      .catch(err => {
         console.error(err);
 
         res.writeHead(400, {'Content-Type': 'text/plain'});
