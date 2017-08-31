@@ -16,19 +16,22 @@ const Router = module.exports = function() {
 };
 
 Router.prototype.get = function(endpoint, callback) {
-  debug('#Router.get'); //Do something here
+  debug('#Router.get');
   this.routes.GET[endpoint] = callback;
 };
 
 Router.prototype.post = function(endpoint, callback) {
+  debug('#Router.post');
   this.routes.POST[endpoint] = callback;
 };
 
 Router.prototype.put = function(endpoint, callback) {
+  debug('#Router.put');
   this.routes.PUT[endpoint] = callback;
 };
 
 Router.prototype.delete = function(endpoint, callback) {
+  debug('#Router.delete');
   this.routes.DELETE[endpoint] = callback;
 };
 
@@ -52,7 +55,7 @@ Router.prototype.route = function() {
         console.error(err);
 
         res.writeHead(400, {'Content-Type': 'text/plain'});
-        res.write('bad request; somethins went wrong in the router');
+        res.write('bad request; something went wrong in the router');
         res.end();
       });
   };
