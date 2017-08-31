@@ -10,6 +10,7 @@ const memory = {};
 //   }
 // }
 
+//GET
 storage.create = function(schema, item) {
   debug('#create');
   if(!schema) return Promise.reject(new Error('cannot create; schema required'));
@@ -21,14 +22,6 @@ storage.create = function(schema, item) {
 };
 
 storage.fetchOne = function(schema, itemId) {
-  // These two formats are effectively the same functionality; different formats
-  // if(!schema) return Promise.reject(new Error('cannot get item; schema required'))
-  // if(!itemId) return Promise.reject(new Error('cannon get item; itemId required'))
-  // if(!memory[schema]) return Promise.reject(new Error('cannot get item; schema does not exist'))
-  // if(!memory[schema][itemId]) return Promise.reject(new Error('cannot get item; item does not exist'))
-
-  // return Promise.resolve(memory[schema][itemId])
-
   return new Promise((resolve, reject) => {
     if(!schema) return reject(new Error('cannot get item; schema required'));
     if(!itemId) return reject(new Error('cannon get item; itemId required'));
@@ -38,3 +31,17 @@ storage.fetchOne = function(schema, itemId) {
     return resolve(memory[schema][itemId]);
   });
 };
+
+
+//PUT
+storage.update = function(schema, item) {
+  debug('#create');
+  if(!schema) return Promise.reject(new Error('cannot create; schema required'));
+  if(!item) return Promise.reject(new Error('cannot create; item required'));
+  if(!memory[schema]) memory[schema] = {};
+
+  memory[schema][item._id] = item;
+  return Promise.resolve(item);
+};
+
+//DELETE
