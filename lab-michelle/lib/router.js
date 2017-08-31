@@ -3,21 +3,22 @@
 const debug = require('debug')('http:router');
 const parseUrl = require('./parse-url');
 const parseJson = require('./parse-json');
+const server = require('../server.js');
+
 
 const Router = module.exports = function() {
   this.routes = {
-    GET: {
-      // '/api/toy': (res, req)=> {
-      //   res.writeHead(200, {'Content-Type': 'text/plain'});
-      //   // let toy = req.url.query; res.write(toy);
-      //   // //Logic for the send: if we're getting something we gotta get something back??
-      //   // res.send(toy);
-      //   res.end();
-      //   return;
-      // },
+    GET: {},
+    // '/api/toy': (res, req)=> {
+    //   res.writeHead(200, {'Content-Type': 'text/plain'});
+    //   // let toy = req.url.query; res.write(toy);
+    //   // //Logic for the send: if we're getting something we gotta get something back??
+    //   // res.send(toy);
+    //   res.end();
+    //   return;
+    // },
 
-      // '/cowsay': ()=> {}
-    },
+    // '/cowsay': ()=> {}
     POST: {},
     PUT: {},
     DELETE: {},
@@ -59,12 +60,15 @@ Router.prototype.route = function() {
         res.write('route not found');
         res.end();
       })
+      //I keep catching here, so there is something wrong with the request OR the method is not set up right?
       .catch(err => {
         console.error(err);
 
         res.writeHead(400, {'Content-Type': 'text/plain'});
         res.write('bad request; something went wrong in the router');
         res.end();
+        server.close();
+        // server.end(); - I was trying to get it to stop the server running bc it seems like that is an issue????
       });
   };
 };
