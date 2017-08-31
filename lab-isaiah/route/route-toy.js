@@ -50,21 +50,29 @@ module.exports = function(router) {
   // This is where the put method goes...
   router.put('/api/toy', (req, res) => {
     debug('/api/toy PUT');
-    try {
-      let newToy = new Toy(req.body.name, req.body.desc);
-      console.log(newToy);
-      storage.create('toy', newToy)
-        .then(toy => {
-          res.writeHead(201, {'Content-Type': 'application/json'});
-          res.write(JSON.stringify(toy));
-          res.end();
-        });
-    } catch(err) {
-      console.error(err);
-      res.writeHead(400, {'Content-Type': 'text/plain'});
-      res.write('bad request: could not create a new toy');
-      res.end();
+    if(!req.url.query._id) {
+      try {
+        let newToy = new Toy(req.body.name, req.body.desc);
+        console.log(newToy);
+        storage.create('toy', newToy)
+          .then(toy => {
+            res.writeHead(201, {'Content-Type': 'application/json'});
+            res.write(JSON.stringify(toy));
+            res.end();
+          });
+      } catch(err) {
+        console.error(err);
+        res.writeHead(400, {'Content-Type': 'text/plain'});
+        res.write('bad request: could not create a new toy');
+        res.end();
+      }
     }
+    Toy.findByIdAndUpdate(req.url.query._id, req.body, {new: true}, (err) => {
+      if(err) console.error(err);
+      res.writeHead(500, {'Content-Type': 'text/plain'});
+      res.write('Toy not updated.');
+      res.end();
+    });
   });
 
 
@@ -72,18 +80,15 @@ module.exports = function(router) {
   router.delete('/api/toy', (req, res) => {
     debug('/api/toy DELETE');
     try {
-      let newToy = new Toy(req.body.name, req.body.desc);
-      console.log(newToy);
-      storage.create('toy', newToy)
-        .then(toy => {
-          res.writeHead(201, {'Content-Type': 'application/json'});
-          res.write(JSON.stringify(toy));
-          res.end();
-        });
+      Toy.findByIdAndRemove(req.url.query._id, () => {
+        res.writeHead(204, {'Content-Type': 'text/plain'});
+        res.write('successful request: toy deleted');
+        res.end();
+      });
     } catch(err) {
       console.error(err);
       res.writeHead(400, {'Content-Type': 'text/plain'});
-      res.write('bad request: could not create a new toy');
+      res.write('bad request: Unable to delete toy');
       res.end();
     }
   });
