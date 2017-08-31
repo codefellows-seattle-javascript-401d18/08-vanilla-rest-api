@@ -3,7 +3,7 @@
 const debug = require('debug')('http:router');
 const parseUrl = require('./parse-url');
 const parseJson = require('./parse-json');
-const server = require('../server.js');
+// const server = require('../server.js');
 
 
 const Router = module.exports = function() {
