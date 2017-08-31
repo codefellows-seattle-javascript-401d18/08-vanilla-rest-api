@@ -27,7 +27,7 @@ describe('#ROUTE-TOY-TEST', () => {
           .send({'name': 'PowerRanger', 'desc': 'Totally Awesome Red Ranger'})
           .type('application/json')
           .end((err, res) => {
-            aNewID = this.response;
+            aNewID = res.body._id;
             expect(res.body.name).toEqual('PowerRanger');
             expect(res.body.desc).toEqual('Totally Awesome Red Ranger');
             expect(res.status).toEqual(201);
@@ -63,9 +63,8 @@ describe('#ROUTE-TOY-TEST', () => {
       });
 
       test('Should return user with toy information from an ID', done => {
-        console.log(aNewID._id);
         superagent.get('localhost:3000/api/toy')
-          .send({'_id': `${aNewID._id}`})
+          .send({'_id': `${aNewID}`})
           .type('application/json')
           .end((err, res) => {
             expect(res.body).toEqual('PowerRanger');
@@ -103,7 +102,7 @@ describe('#ROUTE-TOY-TEST', () => {
 
       test('Should respond with 204 no body content for a request with a valid resource ID.', done => {
         superagent.delete('localhost:3000/api/toy')
-          .send({'_id': `${aNewID._id}`})
+          .send({'_id': `${aNewID}`})
           .type('application/json')
           .end((err, res) => {
             // expect(res.text).toEqual({ text: JSON.stringify('Hi, Im Cow') });
@@ -128,7 +127,7 @@ describe('#ROUTE-TOY-TEST', () => {
 
       test('Should respond with no body content for a put request with a valid body', done => {
         superagent.put('localhost:3000/api/toy')
-          .send({'_id': `${aNewID._id}`, 'name': 'Gavin', 'desc':'SlightlyAwesome'})
+          .send({'_id': `${aNewID}`, 'name': 'Gavin', 'desc':'SlightlyAwesome'})
           .type('application/json')
           .end((err, res) => {
             expect(res.status).toEqual(400);
