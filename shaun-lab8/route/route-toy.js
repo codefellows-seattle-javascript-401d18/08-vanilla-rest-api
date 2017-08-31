@@ -1,37 +1,37 @@
 'use strict';
 
-const debug = require('debug')('http:route-cars');
-const Cars = require('../model/cars');
+const debug = require('debug')('http:route-toy');
+const Toy = require('../model/toy');
 const storage = require('../lib/storage');
 const router = require('../lib/router');
 
 module.exports = function(router) {
-  router.post('/api/cars', (req, res) => {
-    debug('/api/cars POST');
+  router.post('/api/toy', (req, res) => {
+    debug('/api/toy POST');
     try {
-      let newcars = new Cars(req.body.make, req.body.model, req.body.year);
+      let newToy = new Toy(req.body.name, req.body.desc);
       // if successful, store this thing in memory using the storage module
-      storage.create('cars', newcars)
-        .then(cars => {
+      storage.create('toy', newToy)
+        .then(toy => {
           res.writeHead(201, {'Content-Type': 'application/json'});
-          res.write(JSON.stringify(cars));
+          res.write(JSON.stringify(toy));
           res.end();
         });
     } catch(e) {
       console.error(e);
       res.writeHead(400, {'Content-Type': 'text/plain'});
-      res.write('bad request: could not create a new cars');
+      res.write('bad request: could not create a new toy');
       res.end();
     }
   });
 
-  router.get('/api/cars', (req, res) => {
-    debug('/api/cars GET');
+  router.get('/api/toy', (req, res) => {
+    debug('/api/toy GET');
     if(req.url.query._id) {
-      storage.fetchOne('cars', req.url.query._id)
-        .then(cars => {
+      storage.fetchOne('toy', req.url.query._id)
+        .then(toy => {
           res.writeHead(200, {'Content-Type': 'application/json'});
-          res.write(JSON.stringify(cars));
+          res.write(JSON.stringify(toy));
           res.end();
         })
         .catch(err => {
@@ -49,12 +49,13 @@ module.exports = function(router) {
   });
 
   ///delete method
-  router.delete('/api/cars', (req, res) => {
-    debug('/api/cars DELETE');
+  router.delete('/api/toy', (req, res) => {
+    debug('/api/toy DELETE');
     if(req.url.query._id) {
-      storage.deleteItem('cars', req.url.query._if)
-        .then(cars => {
+      storage.deleteItem('toy', req.url.query._if)
+        .then(toy => {
           res.writeHead(200, {'Content-Type': 'text/plain'});
+          res.write('toy deleted');
           res.end();
         })
         .catch(err => {
@@ -70,13 +71,12 @@ module.exports = function(router) {
     res.end();
   });
 
-
   ///put method
-  router.put('/api/cars', (req, res) => {
-    debug('api/cars PUT');
+  router.put('/api/toy', (req, res) => {
+    debug('api/toy PUT');
     if(req.url.query._id) {
-      storage.updateItem('cars', req.url.query._id)
-        .then(cars => {
+      storage.updateItem('toy', req.url.query._id)
+        .then(toy => {
           res.writeHead(200, {'Content-Type': 'application/json'});
           res.end();
         })

@@ -6,7 +6,7 @@ const Router = require('./lib/router');
 const router = new Router();
 const PORT = process.env.PORT || 3000;
 
-require('./route/route-cars')(router);
+require('./route/route-toy')(router);
 // require('./route/route-kid')(router)
 // require('./route/route-family')(router)
 

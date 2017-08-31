@@ -10,22 +10,22 @@ How To Use
 
 To use this code, run nodemon on the server.js file while in the directory.
 
-To add/POST a new car in the server enter
+To add/POST a new toy in the server enter
 
-http POST localhost:3000/api/car name="Nissan" model="Altima" year=2008
+http POST :3000/api/toy name=barney desc='purple dino'
 where you can change what goes in after each equal sign.
 
-To GET/read a car by it's Id, enter
+To GET/read a toy by it's Id, enter
 
-http GET localhost:3000/api/car?id="f18965da-5bf4-471c-9d90-3bea009d1134"
-where the id= whatever the id of the car is.
+http GET localhost:3000/api/toy?id="f18965da-5bf4-471c-9d90-3bea009d1134"
+where the id= whatever the id of the toy is.
 
-To update/PUT a car, enter
+To update/PUT a toy, enter
 
-http PUT localhost:3000/api/car id="f18965da-5bf4-471c-9d90-3bea009d1134" name="Batman" model="batmobile" horsepower=10
-where the values of the name, model and year are whatever is entered after the equals
+http PUT localhost:3000/api/toy id="f18965da-5bf4-471c-9d90-3bea009d1134" name="Batman" desc="batmobile"
+where the values of the name and desc are whatever is entered after the equals
 
-To Delete a car from the server enter
+To Delete a toy from the server enter
 
-http DELETE localhost:3000/api/car?id="f9cd6bea-1d0d-4b0a-8cd0-365f52522632"
-where the id is the car's id you want to delete.
+http DELETE localhost:3000/api/toy?id="f9cd6bea-1d0d-4b0a-8cd0-365f52522632"
+where the id is the toy's id you want to delete.
