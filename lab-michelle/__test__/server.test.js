@@ -1,6 +1,7 @@
 'use strict';
 
 const server = require('../server.js');
+const toy = require('../route/route-toy.js');
 const superagent = require('superagent');
 require('jest');
 
@@ -13,25 +14,30 @@ describe('We have a server instance', function() {
   });
   //write a test to ensure that your api returns a status code of 404 for routes that have not been registered//
   describe('Someone puts in a route that has not been registered', ()=> {
-    test('should give a 404', () => {
+    test.only('should give a 404', done => {
       superagent.get(':3000')
         .end((err, res) => {
           expect(res.status).toBe(404);expect(res.text).toBe('route not found');
+          server.close();
+          done();
         });
-      expect('something').toBe('bad request; something went wrong in the router');
     });
   });
   //GET: test 404, it should respond with 'not found' for valid requests made with an id that was not found
   describe('for api/toy/ endpoint', ()=> {
-    describe('testing GET', ()=> {
+    describe('testing GET', done => {
       test('should give a 404', () => {
         superagent.get(':3000')
           .end((err, res) => {
-            expect(res.status).toBe(404);expect(res.text).toBe('cannot get item; itemId required');
+            expect(res.status).toBe(404);
+            // expect(res.text).toBe('not found');
+            server.close();
+            done();
           });
-        });
       });
     });
+  });
+});
 
 //write tests to ensure the /api/simple-resource-name endpoint responds as described for each condition below:
 
