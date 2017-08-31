@@ -5,7 +5,7 @@ const debug = require('debug')('http:storage');
 const storage = module.exports = {};
 const memory = {};
 // const memory = {
-//   'cars': {
+//   'toy': {
 //     '123-456-789': {_id: '123-456-789', name: 'barney', desc: 'purple dino'}
 //   }
 // }
