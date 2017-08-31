@@ -67,8 +67,11 @@ Router.prototype.route = function() {
         res.writeHead(400, {'Content-Type': 'text/plain'});
         res.write('bad request; something went wrong in the router');
         res.end();
-        server.close();
+        server.close(); //will try this again after a literal reboot of computer
+        // return; NOPE doesn't work
+        // server.close(); this doesn't work either
         // server.end(); - I was trying to get it to stop the server running bc it seems like that is an issue????
+
       });
   };
 };

@@ -25,16 +25,14 @@ module.exports = function(router) {
   });
 
 
-  router.post('/api/toy', (req, res) => {
+  router.put('/api/toy', (req, res) => {
     debug('/api/toy POST');
     try {
-      let newToy = new Toy(req.body.name, req.body.desc);
-      storage.create('toy', newToy)
-        .then(toy => {
-          res.writeHead(201, {'Content-Type': 'application/json'});
-          res.write(JSON.stringify(toy));
-          res.end();
-        });
+      if (req.body.name === storage.memory.toy.name) {
+        res.writeHead(201, {'Content-Type': 'application/json'});
+        // res.write(JSON.stringify(toy));
+        res.end();
+      }
     } catch(e) {
       console.error(e);
       res.writeHead(400, {'Content-Type': 'text/plain'});
