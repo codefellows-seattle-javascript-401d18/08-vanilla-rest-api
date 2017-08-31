@@ -25,3 +25,12 @@ storage.fetchOne = function(schema, itemId) {
     return resolve(memory[schema][itemId]);
   });
 };
+
+//Maybe I need a storage.delete method to call for the DELETE thing
+storage.delete = function(schema, itemId) {
+  return new Promise((resolve, reject) => {
+    memory[schema][item._id] = item;
+    if (item) item.delete;
+    //I think this MIIIIIIIGHT work but it's hard to say 
+  });
+};

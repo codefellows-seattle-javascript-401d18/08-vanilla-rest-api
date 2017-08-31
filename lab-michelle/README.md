@@ -16,7 +16,9 @@ npm i
 ```
 
 ## Endpoints & Request/Responses
-Our endpoint is: /api/toy
+Our endpoint is: /api/toy/
+
+POST http://localhost:3000/api/toy
 <!--
 POST request
 pass data as stringifed JSON in the body of a POST request to create a new resource
@@ -37,3 +39,5 @@ successful status code of 204 -->
 + Demo code from Scott today (retyped)
 + Demo code from 07 code review (so, chat assignment) to get the test syntax right
 + Since we're building something based on Express, it made sense to look at the Express docs to see if they could be helpful: http://expressjs.com/en/guide/routing.html
++ https://eslint.org/docs/rules/no-debugger#when-not-to-use-it Debugger rules for eslint
++ How to kill a server on Stack Overflow https://stackoverflow.com/questions/4075287/node-express-eaddrinuse-address-already-in-use-kill-server
