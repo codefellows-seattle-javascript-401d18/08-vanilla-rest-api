@@ -53,7 +53,7 @@ module.exports = function(router) {
   router.delete('/api/toy', (req, res) => {
     debug('/api/toy DELETE');
     if(!req.url.query._id){
-      res.writeHead(400);
+      res.writeHead(404);
       res.write('error - Improper format for DELETE');
       res.end();
       return ;
@@ -73,7 +73,7 @@ module.exports = function(router) {
       return;
     }
     storage.put('toy', req.url.query._id, req);
-    res.writeHead(202, {
+    res.writeHead(204, {
       'Content-Type': 'application/json',
     });
     res.write('Updated this toy with ' + req.body.name + ' and ' + req.body.desc);
