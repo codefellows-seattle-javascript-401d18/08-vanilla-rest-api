@@ -16,20 +16,23 @@ const Router = module.exports = function() {
 };
 
 Router.prototype.get = function(endpoint, callback) {
-  // debug('#Router.get')
+  debug('#Router.get');
   this.routes.GET[endpoint] = callback;
 };
 
 Router.prototype.post = function(endpoint, callback) {
   this.routes.POST[endpoint] = callback;
+  debug('#Router.get');
 };
 
 Router.prototype.put = function(endpoint, callback) {
   this.routes.PUT[endpoint] = callback;
+  debug('#Router.put');
 };
 
 Router.prototype.delete = function(endpoint, callback) {
   this.routes.DELETE[endpoint] = callback;
+  debug('#Router.delete');
 };
 
 Router.prototype.route = function() {

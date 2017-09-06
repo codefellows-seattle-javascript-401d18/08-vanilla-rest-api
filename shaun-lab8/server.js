@@ -12,7 +12,7 @@ require('./route/route-toy')(router);
 
 const server = module.exports = http.createServer(router.route());
 
-server.listen(PORT, () => console.log(`Listening on ${PORT}`));
+server.listen(PORT, () => debug(`Listening on ${PORT}`));
 
 // TODOs:
 // 1. Create a RESTful API using only vanilla JS and Node
