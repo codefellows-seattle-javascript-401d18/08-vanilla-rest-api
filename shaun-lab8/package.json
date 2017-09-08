@@ -1,0 +1,35 @@
+{
+  "name": "08-vanilla-rest-api",
+  "version": "1.0.0",
+  "description": "![cf](https://i.imgur.com/7v5ASc8.png) Lab 08: Vanilla REST API ======",
+  "main": "index.js",
+  "scripts": {
+      "start": "node server.js",
+      "start:watch": "nodemon server.js",
+      "start:debug": "DEBUG=http* nodemon server.js",
+      "test": "jest",
+      "test:watch": "jest --watchAll",
+      "lint": "eslint .",
+      "lint:test": "npm run lint && npm test"
+    },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Spwahle/08-vanilla-rest-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Spwahle/08-vanilla-rest-api/issues"
+  },
+  "homepage": "https://github.com/Spwahle/08-vanilla-rest-api#readme",
+  "dependencies": {
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "debug": "^3.0.1",
+    "jest": "^21.0.1",
+    "superagent": "^3.6.0"
+  }
+}
